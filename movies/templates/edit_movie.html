@@ -1,0 +1,14 @@
+{% extends "movies/base.html" %}
+{% block content %}
+<h1>Editar Película</h1>
+{{ error }}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Actualizar</button>
+</form>
+<form action="{% url 'delete_movie' movie.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+</form>
+{% endblock %}

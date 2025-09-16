@@ -1,0 +1,15 @@
+{% extends "movies/base.html" %}
+{% block content %}
+<h1>Detalle de Película</h1>
+<h2>{{ movie.title }}</h2>
+<p>Género: {{ movie.genre }}</p>
+<p>Director: {{ movie.director }}</p>
+<p>Año: {{ movie.release_year }}</p>
+<p>Descripción: {{ movie.description }}</p>
+<a href="{% url 'edit_movie' movie.id %}">Editar</a>
+<form action="{% url 'delete_movie' movie.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Eliminar</button>
+</form>
+<a href="{% url 'list_movies' %}">Volver a películas</a>
+{% endblock %}
